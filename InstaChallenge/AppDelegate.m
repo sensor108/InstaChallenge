@@ -7,16 +7,41 @@
 //
 
 #import "AppDelegate.h"
+#import "AFNetworkReachabilityManager.h"
+
+NSString * const USERDEFAULT_KEY_ACCESS_TOKEN = @"USERDEFAULT_KEY_ACCESS_TOKEN";
+NSString * const USERDEFAULT_KEY_USER_ID = @"USERDEFAULT_KEY_USER_ID";
+
 
 @interface AppDelegate ()
+
+
 
 @end
 
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (![[AFNetworkReachabilityManager sharedManager] isReachable]) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not reachable"
+                                                                message:@"There seems to be no internet connection"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+
+            
+        }
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    
     return YES;
 }
 
@@ -41,5 +66,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35B7D1731CD931E7BFE6D6A6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C01D6C7CC45E5044678E2E /* libPods.a */; };
+		6D03C41E19DBF97F000EC62A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03C41D19DBF97F000EC62A /* RootViewController.m */; };
+		6D03C42419DC01FF000EC62A /* ModalLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03C42319DC01FF000EC62A /* ModalLoginView.m */; };
+		6D17D7FA19DD584F007CFCA6 /* FullscreenImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D17D7F919DD584F007CFCA6 /* FullscreenImageView.m */; };
 		6D88EE0C19DABF8A00774D0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D88EE0B19DABF8A00774D0C /* main.m */; };
 		6D88EE0F19DABF8A00774D0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D88EE0E19DABF8A00774D0C /* AppDelegate.m */; };
-		6D88EE1219DABF8A00774D0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D88EE1119DABF8A00774D0C /* ViewController.m */; };
 		6D88EE1519DABF8A00774D0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D88EE1319DABF8A00774D0C /* Main.storyboard */; };
 		6D88EE1719DABF8A00774D0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D88EE1619DABF8A00774D0C /* Images.xcassets */; };
 		6D88EE1A19DABF8A00774D0C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D88EE1819DABF8A00774D0C /* LaunchScreen.xib */; };
 		6D88EE2619DABF8A00774D0C /* InstaChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D88EE2519DABF8A00774D0C /* InstaChallengeTests.m */; };
+		6DAE095319DC363F00B364FE /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE095219DC363F00B364FE /* MediaViewController.m */; };
+		6DAE095819DC43D600B364FE /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE095719DC43D600B364FE /* ImageInfoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +32,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42C01D6C7CC45E5044678E2E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F9218B7F7332402759A8F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6D03C41C19DBF97F000EC62A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		6D03C41D19DBF97F000EC62A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		6D03C42219DC01FF000EC62A /* ModalLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalLoginView.h; sourceTree = "<group>"; };
+		6D03C42319DC01FF000EC62A /* ModalLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalLoginView.m; sourceTree = "<group>"; };
+		6D17D7F819DD584F007CFCA6 /* FullscreenImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullscreenImageView.h; sourceTree = "<group>"; };
+		6D17D7F919DD584F007CFCA6 /* FullscreenImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullscreenImageView.m; sourceTree = "<group>"; };
 		6D88EE0619DABF8A00774D0C /* InstaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D88EE0A19DABF8A00774D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D88EE0B19DABF8A00774D0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6D88EE0D19DABF8A00774D0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6D88EE0E19DABF8A00774D0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6D88EE1019DABF8A00774D0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6D88EE1119DABF8A00774D0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6D88EE1419DABF8A00774D0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D88EE1619DABF8A00774D0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D88EE1919DABF8A00774D0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6D88EE1F19DABF8A00774D0C /* InstaChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D88EE2419DABF8A00774D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D88EE2519DABF8A00774D0C /* InstaChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaChallengeTests.m; sourceTree = "<group>"; };
+		6DAE095119DC363F00B364FE /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
+		6DAE095219DC363F00B364FE /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaViewController.m; sourceTree = "<group>"; };
+		6DAE095619DC43D600B364FE /* ImageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoCell.h; sourceTree = "<group>"; };
+		6DAE095719DC43D600B364FE /* ImageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfoCell.m; sourceTree = "<group>"; };
+		A768B13E8E2B56AEE51913B9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B7D1731CD931E7BFE6D6A6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +77,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67312B8E91A5A3CCE56F4B73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42C01D6C7CC45E5044678E2E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6D88EDFD19DABF8A00774D0C = {
 			isa = PBXGroup;
 			children = (
 				6D88EE0819DABF8A00774D0C /* InstaChallenge */,
 				6D88EE2219DABF8A00774D0C /* InstaChallengeTests */,
 				6D88EE0719DABF8A00774D0C /* Products */,
+				EF683A8FCA3BB917F1B75031 /* Pods */,
+				67312B8E91A5A3CCE56F4B73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,8 +110,16 @@
 			children = (
 				6D88EE0D19DABF8A00774D0C /* AppDelegate.h */,
 				6D88EE0E19DABF8A00774D0C /* AppDelegate.m */,
-				6D88EE1019DABF8A00774D0C /* ViewController.h */,
-				6D88EE1119DABF8A00774D0C /* ViewController.m */,
+				6D03C41C19DBF97F000EC62A /* RootViewController.h */,
+				6D03C41D19DBF97F000EC62A /* RootViewController.m */,
+				6D03C42219DC01FF000EC62A /* ModalLoginView.h */,
+				6D03C42319DC01FF000EC62A /* ModalLoginView.m */,
+				6DAE095119DC363F00B364FE /* MediaViewController.h */,
+				6DAE095219DC363F00B364FE /* MediaViewController.m */,
+				6DAE095619DC43D600B364FE /* ImageInfoCell.h */,
+				6DAE095719DC43D600B364FE /* ImageInfoCell.m */,
+				6D17D7F819DD584F007CFCA6 /* FullscreenImageView.h */,
+				6D17D7F919DD584F007CFCA6 /* FullscreenImageView.m */,
 				6D88EE1319DABF8A00774D0C /* Main.storyboard */,
 				6D88EE1619DABF8A00774D0C /* Images.xcassets */,
 				6D88EE1819DABF8A00774D0C /* LaunchScreen.xib */,
@@ -119,6 +154,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EF683A8FCA3BB917F1B75031 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F9218B7F7332402759A8F26 /* Pods.debug.xcconfig */,
+				A768B13E8E2B56AEE51913B9 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D88EE2919DABF8A00774D0C /* Build configuration list for PBXNativeTarget "InstaChallenge" */;
 			buildPhases = (
+				B86C167F25F73F86F4E54ED8 /* Check Pods Manifest.lock */,
 				6D88EE0219DABF8A00774D0C /* Sources */,
 				6D88EE0319DABF8A00774D0C /* Frameworks */,
 				6D88EE0419DABF8A00774D0C /* Resources */,
+				20B4A43636E363708AFA1CC5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,6 +214,7 @@
 				TargetAttributes = {
 					6D88EE0519DABF8A00774D0C = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = S97729T67W;
 					};
 					6D88EE1E19DABF8A00774D0C = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -214,14 +261,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20B4A43636E363708AFA1CC5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B86C167F25F73F86F4E54ED8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6D88EE0219DABF8A00774D0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D88EE1219DABF8A00774D0C /* ViewController.m in Sources */,
+				6DAE095319DC363F00B364FE /* MediaViewController.m in Sources */,
+				6D17D7FA19DD584F007CFCA6 /* FullscreenImageView.m in Sources */,
 				6D88EE0F19DABF8A00774D0C /* AppDelegate.m in Sources */,
 				6D88EE0C19DABF8A00774D0C /* main.m in Sources */,
+				6D03C42419DC01FF000EC62A /* ModalLoginView.m in Sources */,
+				6D03C41E19DBF97F000EC62A /* RootViewController.m in Sources */,
+				6DAE095819DC43D600B364FE /* ImageInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,21 +427,29 @@
 		};
 		6D88EE2A19DABF8A00774D0C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9218B7F7332402759A8F26 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = InstaChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		6D88EE2B19DABF8A00774D0C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A768B13E8E2B56AEE51913B9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = InstaChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -414,6 +506,7 @@
 				6D88EE2B19DABF8A00774D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6D88EE2C19DABF8A00774D0C /* Build configuration list for PBXNativeTarget "InstaChallengeTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +515,7 @@
 				6D88EE2E19DABF8A00774D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
