@@ -51,6 +51,8 @@
     return NO;
 }
 
+#pragma mark - Load media
+
 - (void)loadMedia
 {
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_USER_ID];
@@ -81,7 +83,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    //[self.navigationController setNavigationBarHidden:YES animated:YES];
     
     InstagramMedia *media = [self.mediaArray objectAtIndex:indexPath.row];
     CGRect rectInSuperview = [tableView rectForRowAtIndexPath:indexPath];
@@ -161,7 +163,9 @@
 {
 
     self.fullscreenImageView = [[FullscreenImageView alloc] initWithFrame:frame];
-    [self.view addSubview:self.fullscreenImageView];
+    
+    UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
+    [currentWindow addSubview:self.fullscreenImageView];
     
     [self.fullscreenImageView setupWithInstagramMedia:media dismissComplitionBlock:dismissCompletion];
     [self.fullscreenImageView startFullScreenAnimation];
@@ -240,10 +244,5 @@
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
-
-
-
-
-
 
 @end
