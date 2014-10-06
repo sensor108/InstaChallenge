@@ -1,5 +1,5 @@
 //
-//  ImageInfoCellTableViewCell.h
+//  ImageInfoCell.h
 //  InstaChallenge
 //
 //  Created by sensor108 on 01.10.14.
@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InstagramKit.h"
 
-@interface ImageInfoCellTableViewCell : UITableViewCell
+
+@interface ImageInfoCell : UITableViewCell
+
+@property (nonatomic, strong) UIImageView *mediaImageView;
+
+- (void)setupWithInstagramMedia:(InstagramMedia *)media;
+
 
 @end

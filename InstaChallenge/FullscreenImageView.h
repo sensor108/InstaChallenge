@@ -7,7 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InstagramKit.h"
+
+typedef void (^FullScreenImageViewDismissCompletionBlock)();
+
+@protocol FullscreenImageViewDelegate <NSObject>
+
+- (void)dismissFullscreenImageView;
+
+@end
 
 @interface FullscreenImageView : UIView
 
+@property (nonatomic, weak) id<FullscreenImageViewDelegate>delegate;
+
+- (id)initWithFrame:(CGRect)frame andOffset:(CGFloat)offset;
+
+
+- (void)setupWithInstagramMedia:(InstagramMedia*)media andDismissComplitionBlock:(FullScreenImageViewDismissCompletionBlock)block;
+- (void)startFullScreenAnimation;
 @end
+
