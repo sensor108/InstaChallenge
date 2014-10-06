@@ -15,16 +15,12 @@ NSString * const USERDEFAULT_KEY_USER_ID = @"USERDEFAULT_KEY_USER_ID";
 
 @interface AppDelegate ()
 
-
-
 @end
 
 @implementation AppDelegate
 
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (![[AFNetworkReachabilityManager sharedManager] isReachable]) {

@@ -9,8 +9,6 @@
 #import "FullscreenImageView.h"
 #import "UIImageView+AFNetworking.h"
 
-
-
 @interface FullscreenImageView ()
 
 @property (nonatomic, strong) FullScreenImageViewDismissCompletionBlock dismissComplitionBlock;
@@ -23,12 +21,12 @@
 @implementation FullscreenImageView
 
 
-- (id)initWithFrame:(CGRect)frame andOffset:(CGFloat)offset
+- (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:CGRectMake(0.0f,
-                                           offset,
+                                           0.0f,
                                            CGRectGetWidth([UIScreen mainScreen].bounds),
-                                           CGRectGetHeight([UIScreen mainScreen].bounds) - offset)];
+                                           CGRectGetHeight([UIScreen mainScreen].bounds))];
     if (self) {
         
         _startingFrame = frame;
@@ -68,7 +66,7 @@
     
 }
 
-- (void)setupWithInstagramMedia:(InstagramMedia*)media andDismissComplitionBlock:(FullScreenImageViewDismissCompletionBlock)block;
+- (void)setupWithInstagramMedia:(InstagramMedia*)media dismissComplitionBlock:(FullScreenImageViewDismissCompletionBlock)block
 {
     self.dismissComplitionBlock = block;
     [self.imageView setImageWithURL:media.thumbnailURL];
@@ -85,16 +83,15 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          
-                         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+                         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:1.0f];
 
                          self.imageView.frame = self.bounds;
                          
                          CGRect frame = self.doneButton.frame;
-                         frame.origin = CGPointMake(CGRectGetWidth(self.imageView.frame) - CGRectGetWidth(frame) - 16.0f,
-                                                    CGRectGetMinY(self.imageView.frame) + 16.0f);
+                         CGFloat padding = 16.0f;
+                         frame.origin = CGPointMake(CGRectGetWidth(self.imageView.frame) - CGRectGetWidth(frame) - padding,
+                                                    CGRectGetMinY(self.imageView.frame) + padding);
                          self.doneButton.frame = frame;
-                         
-                         
                          
                      }
                      completion:^(BOOL finished) {
@@ -108,13 +105,10 @@
                                               
                                           }
                                           completion:^(BOOL finished) {
-                                              
                                           }
                           ];
-                         
                      }
      ];
-    
 }
 
 - (void)layoutSubviews
@@ -148,7 +142,11 @@
                                           }
                                           completion:^(BOOL finished) {
                                               
-                                              self.dismissComplitionBlock();
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  self.dismissComplitionBlock();
+                                              });
+                                              
+                                              
                                               
                                           }
                           ];
@@ -157,7 +155,5 @@
                      }
      ];
 }
-
-
 
 @end

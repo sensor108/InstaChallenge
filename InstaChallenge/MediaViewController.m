@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 René Nicklas. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
+
 #import "MediaViewController.h"
 #import "AppDelegate.h"
 #import "InstagramKit.h"
 #import "ImageInfoCell.h"
 #import "FullscreenImageView.h"
 
-@interface MediaViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MediaViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -20,6 +22,7 @@
 @property (nonatomic, strong) InstagramPaginationInfo *currentPaginationInfo;
 @property (nonatomic, strong) NSMutableArray *mediaArray;
 @property (nonatomic, strong) FullscreenImageView *fullscreenImageView;
+@property (nonatomic, strong) NSIndexPath *accessoryIndex;
 
 @end
 
@@ -40,19 +43,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadSelfFeed];
+    [self loadMedia];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (BOOL)prefersStatusBarHidden {
     return NO;
 }
 
-- (void)loadSelfFeed
+- (void)loadMedia
 {
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_USER_ID];
     
@@ -81,11 +80,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
     InstagramMedia *media = [self.mediaArray objectAtIndex:indexPath.row];
     CGRect rectInSuperview = [tableView rectForRowAtIndexPath:indexPath];
     rectInSuperview = [tableView convertRect:rectInSuperview toView:self.view];
     
-    __block ImageInfoCell *cell = (ImageInfoCell*)[tableView cellForRowAtIndexPath:indexPath];
+    ImageInfoCell *cell = (ImageInfoCell*)[tableView cellForRowAtIndexPath:indexPath];
     cell.mediaImageView.hidden = YES;
     
     CGRect imageFrameRect = cell.mediaImageView.frame;
@@ -98,6 +100,9 @@
         cell.mediaImageView.hidden = NO;
         [self.fullscreenImageView removeFromSuperview];
         self.fullscreenImageView = nil;
+
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        
     }];
 }
 
@@ -123,21 +128,122 @@
     return imageInfoCell;
 }
 
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSMutableArray *buttonTitles = [NSMutableArray arrayWithObjects:@"Send Email", @"Open in Safari", nil];
+
+    InstagramMedia *media = [self.mediaArray objectAtIndex:indexPath.row];
+    NSURL *instagramURL = [NSURL URLWithString:[NSString stringWithFormat:@"instagram://media?id=%@", media.Id]];
+    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+        [buttonTitles addObject:@"Open in Instagram"];
+    }
+    
+    self.accessoryIndex = indexPath;
+
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:nil
+                                         destructiveButtonTitle:@"Cancel"
+                                              otherButtonTitles:nil];
+    
+    for (NSString *title in buttonTitles) {
+        [sheet addButtonWithTitle:title];
+    }
+    
+    [sheet showInView:self.view];
+}
+
+#pragma mark - Show fullscreen
+
 
 -(void)displayFullScreenImageViewWithFrame:(CGRect)frame andInstagramMedia:(InstagramMedia *)media andDismissCompletionBlock:(FullScreenImageViewDismissCompletionBlock)dismissCompletion
 {
 
-    CGFloat offset = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
-    offset += CGRectGetHeight(self.navigationController.navigationBar.frame);
-    
-    frame.origin.y -= offset;
-
-    self.fullscreenImageView = [[FullscreenImageView alloc] initWithFrame:frame andOffset:offset];
+    self.fullscreenImageView = [[FullscreenImageView alloc] initWithFrame:frame];
     [self.view addSubview:self.fullscreenImageView];
     
-    [self.fullscreenImageView setupWithInstagramMedia:media andDismissComplitionBlock:dismissCompletion];
-    
+    [self.fullscreenImageView setupWithInstagramMedia:media dismissComplitionBlock:dismissCompletion];
     [self.fullscreenImageView startFullScreenAnimation];
 }
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+    if (buttonIndex == actionSheet.destructiveButtonIndex || buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    
+    InstagramMedia *media = [self.mediaArray objectAtIndex:self.accessoryIndex.row];
+    
+    
+    switch (buttonIndex) {
+        case 1: {
+            [self generateMail:media.standardResolutionImageURL];
+            break;
+        }
+        case 2: {
+            
+            [[UIApplication sharedApplication] openURL:media.standardResolutionImageURL];
+            
+            break;
+        }
+        case 3: {
+            NSURL *instagramURL = [NSURL URLWithString:[NSString stringWithFormat:@"instagram://media?id=%@", media.Id]];
+            if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+                [[UIApplication sharedApplication] openURL:instagramURL];
+            }
+        }
+    }
+}
+
+#pragma mark - Mail
+
+- (void)generateMail:(NSURL*)url
+{
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            MFMailComposeViewController *vc = [[MFMailComposeViewController alloc] init];
+            vc.mailComposeDelegate = self;
+            [vc setSubject:@"Instagram Image"];
+            
+            [vc addAttachmentData:[NSData dataWithContentsOfURL:url] mimeType:@"image/png" fileName:@"instaImage.png"];
+            
+            // Fill out the email body text
+            NSString *emailBody = @"Please have a look!";
+            [vc setMessageBody:emailBody isHTML:NO];
+            
+            
+            [self presentViewController:vc animated:YES completion:NULL];
+            
+        });
+        
+    } else {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email error"
+                                                            message:@"There seems to be no email account installed"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        
+        [alertView show];
+        
+    }
+    
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+
+
+
 
 @end

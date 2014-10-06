@@ -55,6 +55,7 @@
 - (void)initialSetup
 {
     self.userInfoContainerView.hidden = YES;
+    self.activityIndicator.hidden = YES;
     self.userImageView.layer.shadowRadius = 2.0f;
     self.userImageView.layer.shadowOpacity = 0.4f;
     self.userImageView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
@@ -80,6 +81,9 @@
 
 - (void)showUserInfo
 {
+    self.activityIndicator.hidden = NO;
+    [self.activityIndicator startAnimating];
+    
     [[InstagramEngine sharedEngine] getSelfUserDetailsWithSuccess:^(InstagramUser *userDetail) {
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -149,14 +153,5 @@
     [self showUserInfo];
     
 }
-
--(void)loginFailed
-{
-    [self.loginView removeFromSuperview];
-    self.loginView = nil;
-    
-}
-
-
 
 @end

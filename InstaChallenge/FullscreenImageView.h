@@ -21,10 +21,7 @@ typedef void (^FullScreenImageViewDismissCompletionBlock)();
 
 @property (nonatomic, weak) id<FullscreenImageViewDelegate>delegate;
 
-- (id)initWithFrame:(CGRect)frame andOffset:(CGFloat)offset;
-
-
-- (void)setupWithInstagramMedia:(InstagramMedia*)media andDismissComplitionBlock:(FullScreenImageViewDismissCompletionBlock)block;
+- (void)setupWithInstagramMedia:(InstagramMedia*)media dismissComplitionBlock:(FullScreenImageViewDismissCompletionBlock)block;
 - (void)startFullScreenAnimation;
 @end
 

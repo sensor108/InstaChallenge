@@ -22,7 +22,5 @@
 @protocol ModalLoginViewDelegate <NSObject>
 
 - (void)loginSuccess;
-- (void)loginFailed;
-
 
 @end
