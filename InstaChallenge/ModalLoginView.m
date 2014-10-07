@@ -42,7 +42,7 @@
     self.backgroundView.alpha = 0.0f;
     [self addSubview:self.backgroundView];
     
-    CGSize size = CGSizeMake(CGRectGetWidth(self.bounds) - 40.0f, CGRectGetHeight(self.bounds) - 200.0f);
+    CGSize size = CGSizeMake(CGRectGetWidth(self.bounds) - 60.0f, CGRectGetHeight(self.bounds) - 200.0f);
     
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake((CGRectGetWidth(self.bounds) - size.width) / 2.0f,
                                                             (CGRectGetHeight(self.bounds) - size.height) / 2.0f,
@@ -70,39 +70,56 @@
     [self.activityIndicator startAnimating];
 }
 
-#pragma mark - Display
+#pragma mark - Show login
 
 - (void)showAnimated
 {
     
+    NSDictionary *configuration = [InstagramEngine sharedEngineConfiguration];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=token",
+                                       configuration[kInstagramKitAuthorizationUrlConfigurationKey],
+                                       configuration[kInstagramKitAppClientIdConfigurationKey],
+                                       configuration[kInstagramKitAppRedirectUrlConfigurationKey]]];
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+
     [UIView animateWithDuration:0.18f
+                          delay:0.5f
+                        options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          
-                         
-                         NSDictionary *configuration = [InstagramEngine sharedEngineConfiguration];
-                         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=token",
-                                                            configuration[kInstagramKitAuthorizationUrlConfigurationKey],
-                                                            configuration[kInstagramKitAppClientIdConfigurationKey],
-                                                            configuration[kInstagramKitAppRedirectUrlConfigurationKey]]];
-                         
-                         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
-                         
                          self.backgroundView.alpha = 1.0f;
-                     }
-                     completion:^(BOOL finished) {
+                         
+                     } completion:^(BOOL finished) {
                          
                          [UIView animateWithDuration:0.18f
+                                               delay:0.2f
+                                             options:UIViewAnimationOptionCurveEaseOut
                                           animations:^{
+                                              
                                               self.webView.alpha = 1.0f;
-                                              self.webView.transform = CGAffineTransformIdentity;
+                                              self.webView.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+                                              
+                                          }
+                                          completion:^(BOOL finished) {
+                                              
+                                              [UIView animateWithDuration:0.18f
+                                                                    delay:0.0f
+                                                                  options:UIViewAnimationOptionCurveEaseOut
+                                                               animations:^{
+                                                                   self.webView.transform = CGAffineTransformIdentity;
+                                                               }
+                                                               completion:(NULL)
+                                               ];
+
                                           }
                           ];
-                         
+
                      }
      ];
-
-    
 }
+
+#pragma mark - UIWebViewDelegate
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {

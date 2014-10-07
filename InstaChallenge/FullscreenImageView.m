@@ -20,6 +20,7 @@
 
 @implementation FullscreenImageView
 
+#pragma mark - Lifecycle
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -35,6 +36,8 @@
     }
     return self;
 }
+
+#pragma mark - Setup
 
 - (void)initialSetup
 {
@@ -56,13 +59,12 @@
     [self.doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.doneButton setTitle:@"Done" forState:UIControlStateNormal];
     [self.doneButton addTarget:self action:@selector(doneButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.doneButton sizeToFit];
+    [self addSubview:self.doneButton];
     
+    [self.doneButton sizeToFit];
     CGRect frame = self.doneButton.frame;
     frame.size.width += 10.0f;
     self.doneButton.frame = frame;
-    
-    [self addSubview:self.doneButton];
     
 }
 
@@ -75,6 +77,9 @@
     [self setNeedsLayout];
 }
 
+
+
+#pragma mark - Animations
 
 - (void)startFullScreenAnimation
 {
@@ -104,18 +109,14 @@
                                               self.doneButton.alpha = 1.0f;
                                               
                                           }
-                                          completion:^(BOOL finished) {
-                                          }
+                                          completion:NULL
                           ];
                      }
      ];
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-}
+
+#pragma mark - Actions
 
 - (void)doneButtonTapped:(id)sender
 {

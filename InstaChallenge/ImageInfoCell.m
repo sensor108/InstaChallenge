@@ -19,6 +19,7 @@
 
 @implementation ImageInfoCell
 
+#pragma mark - Lifecycle
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -29,16 +30,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self initialSetup];
-    }
-    return self;
-}
-
-
+#pragma mark - Setup
 
 - (void) initialSetup
 {
@@ -119,12 +111,6 @@
     frame.origin = CGPointMake(CGRectGetMaxX(self.mediaImageView.frame) + padding,
                                CGRectGetMaxY(self.mediaImageView.frame) - CGRectGetHeight(frame));
     self.locationLabel.frame = frame;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

@@ -9,9 +9,9 @@
 #import "AppDelegate.h"
 #import "AFNetworkReachabilityManager.h"
 
-NSString * const USERDEFAULT_KEY_ACCESS_TOKEN = @"USERDEFAULT_KEY_ACCESS_TOKEN";
-NSString * const USERDEFAULT_KEY_USER_ID = @"USERDEFAULT_KEY_USER_ID";
 
+NSString * const USERDEFAULT_KEY_USER_ID = @"USERDEFAULT_KEY_USER_ID";
+NSString * const ENCRYPTION_KEY = @"ku:iGg$eEp(borJ[Uk$v";
 
 @interface AppDelegate ()
 

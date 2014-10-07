@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const USERDEFAULT_KEY_ACCESS_TOKEN;
 extern NSString * const USERDEFAULT_KEY_USER_ID;
+extern NSString * const ENCRYPTION_KEY;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

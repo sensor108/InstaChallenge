@@ -11,6 +11,7 @@
 		6D03C41E19DBF97F000EC62A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03C41D19DBF97F000EC62A /* RootViewController.m */; };
 		6D03C42419DC01FF000EC62A /* ModalLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03C42319DC01FF000EC62A /* ModalLoginView.m */; };
 		6D17D7FA19DD584F007CFCA6 /* FullscreenImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D17D7F919DD584F007CFCA6 /* FullscreenImageView.m */; };
+		6D39887C19E3FCFD00751436 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D39887B19E3FCFD00751436 /* NSData+AES.m */; };
 		6D88EE0C19DABF8A00774D0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D88EE0B19DABF8A00774D0C /* main.m */; };
 		6D88EE0F19DABF8A00774D0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D88EE0E19DABF8A00774D0C /* AppDelegate.m */; };
 		6D88EE1519DABF8A00774D0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D88EE1319DABF8A00774D0C /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 		6D03C42319DC01FF000EC62A /* ModalLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalLoginView.m; sourceTree = "<group>"; };
 		6D17D7F819DD584F007CFCA6 /* FullscreenImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullscreenImageView.h; sourceTree = "<group>"; };
 		6D17D7F919DD584F007CFCA6 /* FullscreenImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullscreenImageView.m; sourceTree = "<group>"; };
+		6D39887A19E3FCFD00751436 /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		6D39887B19E3FCFD00751436 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		6D88EE0619DABF8A00774D0C /* InstaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D88EE0A19DABF8A00774D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D88EE0B19DABF8A00774D0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 		6D88EE0819DABF8A00774D0C /* InstaChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				6D39887A19E3FCFD00751436 /* NSData+AES.h */,
+				6D39887B19E3FCFD00751436 /* NSData+AES.m */,
 				6D88EE0D19DABF8A00774D0C /* AppDelegate.h */,
 				6D88EE0E19DABF8A00774D0C /* AppDelegate.m */,
 				6D03C41C19DBF97F000EC62A /* RootViewController.h */,
@@ -305,6 +310,7 @@
 				6D88EE0C19DABF8A00774D0C /* main.m in Sources */,
 				6D03C42419DC01FF000EC62A /* ModalLoginView.m in Sources */,
 				6D03C41E19DBF97F000EC62A /* RootViewController.m in Sources */,
+				6D39887C19E3FCFD00751436 /* NSData+AES.m in Sources */,
 				6DAE095819DC43D600B364FE /* ImageInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
