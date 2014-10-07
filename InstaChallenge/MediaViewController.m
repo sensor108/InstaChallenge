@@ -14,7 +14,7 @@
 #import "ImageInfoCell.h"
 #import "FullscreenImageView.h"
 
-@interface MediaViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface MediaViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -55,6 +55,7 @@
 
 - (void)loadMedia
 {
+
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_USER_ID];
     
     [[InstagramEngine sharedEngine] getMediaForUser:userID withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
@@ -74,6 +75,15 @@
 
     } failure:^(NSError *error) {
         NSLog(@"Error: %s Reason: %@", __func__, [error localizedDescription]);
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Something went wrong.Please logout and login and try again"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        
     }];
 }
 
@@ -243,6 +253,13 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

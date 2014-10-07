@@ -157,7 +157,9 @@
         [self.userNameLabel setText:userDetail.username];
         
     } failure:^(NSError *error) {
+        // somenthing went wrong. remove all data and show the login screen again
         NSLog(@"Error: %@" , [error localizedDescription]);
+        [self logoutButtonTapped:nil];
     }];
 }
 
