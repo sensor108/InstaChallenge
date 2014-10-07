@@ -12,6 +12,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "NSData+AES.h"
 #import "AppDelegate.h"
+#import "AFNetworkReachabilityManager.h"
+
 
 
 @interface RootViewController () <ModalLoginViewDelegate>
@@ -157,9 +159,15 @@
         [self.userNameLabel setText:userDetail.username];
         
     } failure:^(NSError *error) {
-        // somenthing went wrong. remove all data and show the login screen again
-        NSLog(@"Error: %@" , [error localizedDescription]);
-        [self logoutButtonTapped:nil];
+                NSLog(@"Error: %@" , [error localizedDescription]);
+        
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
+            // somenthing went wrong. remove all data and show the login screen again
+
+             [self logoutButtonTapped:nil];
+        }
+        
+       
     }];
 }
 

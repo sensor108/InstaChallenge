@@ -13,6 +13,8 @@
 #import "InstagramKit.h"
 #import "ImageInfoCell.h"
 #import "FullscreenImageView.h"
+#import "AFNetworkReachabilityManager.h"
+
 
 @interface MediaViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 
@@ -76,13 +78,14 @@
     } failure:^(NSError *error) {
         NSLog(@"Error: %s Reason: %@", __func__, [error localizedDescription]);
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"Something went wrong.Please logout and login and try again"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-        
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:@"Something went wrong.Please logout and try again"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }
         
     }];
 }
